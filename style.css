@@ -34,15 +34,6 @@ html, body {
   padding: 20px;
 }
 
-#myBtn {
-  width: 200px;
-  font-size: 18px;
-  padding: 10px;
-  border: none;
-  background: #000;
-  color: #fff;
-  cursor: pointer;
-}
 #start {
   width: 200px;
   font-size: 18px;
@@ -51,13 +42,10 @@ html, body {
   background: #080703;
   color: #c9c4b0;
   cursor: pointer;
+  border-radius: 50px;
 }
 
-#myBtn:hover {
-  background: #ddd;
-  color: black;
-}
-#start:hover {
+#start:hover, #start:focus {
   background: #c9c4b0;
   color: #080703;
 }
@@ -74,28 +62,55 @@ html, body {
     flex-wrap: wrap;
     width: 210px;
     height: 210px;
-    border: solid 5px #4CD7D0;
-    background-color: #4CD7D0;
+    border: solid 5px #9ead8a;
+    background-color: #9ead8a;
     margin: 30px auto;
 }
 
-.square {
+.gridKey {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 250px;
+    height: 250px;
+    /* border: solid 5px #9ead8a;
+    background-color: #9ead8a; */
+    margin: 30px auto;
+}
+
+.squareKey {
+    width: 80px;
+    height: 80px;
+    /* background-color: #d2c99c;
+    border: 1px solid #9ead8a;
+    border-radius: 5px; */
+}
+
+
+
+.square_deep {
     width: 20px;
     height: 20px;
-    background-color: #A4E8E0;
-    border: 1px solid #4CD7D0;
-    border-radius: 5px;
+    background-color: #d2c99c;
+    border: 1px solid #9ead8a;
+    border-radius: 50px;
+}
+.square_light {
+    width: 20px;
+    height: 20px;
+    background-color: #e8dabe;
+    border: 1px solid #9ead8a;
+    border-radius: 50px;
 }
 
 .snake {
-    background-color: green;
+    background-color: pink;
 }
 
 .apple {
     background-color: blue;
 }
 
-.splashContainer{
+.splashContainerR{
     display: block;
     /* background-color: rgba(92, 89, 73, 0.5); */
     width: 210px;
@@ -105,10 +120,35 @@ html, body {
     top: 50%;
     right: 10%;
 }
+.splashContainerL{
+    display: block;
+    /* background-color: rgba(92, 89, 73, 0.5); */
+    width: 240px;
+    height: 240px;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    Left: 10%;
+}
 
 .message {
     font-size: 20px;
     color: #f21e0d;
     align-self: center;
 
+}
+
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
 }
