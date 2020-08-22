@@ -14,6 +14,11 @@ html, body {
     text-align: center;
     background-color: #080703;
 }
+button{
+  cursor: pointer;
+  border-radius: 50px;
+  
+}
 
 #myVideo {
   position: fixed;
@@ -80,9 +85,22 @@ html, body {
 .squareKey {
     width: 80px;
     height: 80px;
-    /* background-color: #d2c99c;
+    /* background-color: rgba(92, 89, 73, 0.25);
     border: 1px solid #9ead8a;
-    border-radius: 5px; */
+    border-radius: 50px; */
+}
+
+
+#upKeyId, #leftKeyId, #rightKeyId, #downKeyId{
+    background-color: #d2c99c;
+    /* border: 1px solid #9ead8a; */
+    border-radius: 50px;
+    background: rgba(92, 89, 73, 0.25);
+}
+#upKeyId:focus, #leftKeyId:focus, #rightKeyId:focus, #downKeyId:focus{
+    background-color: #9ead8a;
+    border-radius: 50px;
+    background: rgba(92, 89, 73, 0.25);
 }
 
 

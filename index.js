@@ -5,53 +5,78 @@ const scoreDisplay = document.getElementById('score')
 const gridKey = document.getElementById('keyPad');
 
 
+
+
 let squares = []
 let squareKey = [];
 let currentSnake = [2, 1, 0]
 let direction = 1
 const width = 10
-let appleIndex = 0
+let appleIndex ={position: 0, foodName: 0};
 let score = 0
 let intervalTime = 1000
 let speed = 0.9
 let timerId = 0
 
+const food = ['🍆', '🥕', '🍅', '🥒','🍎'];
 
-function createKey(){
+
+
+function createVirtualKeypad(){
+  const upKeyBtn=document.createElement("button");
   const upKey=document.createElement("img");
   upKey.setAttribute("src", "./pics/up-chevron.png");
-  upKey.setAttribute("width", "80px");
-  upKey.setAttribute("id","upKeyId");
+  upKey.setAttribute("width", "70px");
+  upKeyBtn.setAttribute("id","upKeyId");
+  upKeyBtn.appendChild(upKey);
+  const leftKeyBtn=document.createElement("button");
   const leftKey=document.createElement("img");
   leftKey.setAttribute("src", "./pics/leftbutton.png");
-  leftKey.setAttribute("width", "80px");
-  leftKey.setAttribute("id","leftKeyId");
+  leftKey.setAttribute("width", "70px");
+  leftKeyBtn.setAttribute("id","leftKeyId");
+  leftKeyBtn.appendChild(leftKey);
+  const rightKeyBtn=document.createElement("button");
   const rightKey=document.createElement("img");
   rightKey.setAttribute("src", "./pics/right-arrow.png");
-  rightKey.setAttribute("width", "80px");
-  rightKey.setAttribute("id","rightKeyId");
+  rightKey.setAttribute("width", "70px");
+  rightKeyBtn.setAttribute("id","rightKeyId");
+  rightKeyBtn.appendChild(rightKey);
+  const downKeyBtn=document.createElement("button");
   const downKey=document.createElement("img");
   downKey.setAttribute("src", "./pics/down-arrow.png");
-  downKey.setAttribute("width", "80px");
-  downKey.setAttribute("id","downKeyId");
+  downKey.setAttribute("width", "70px");
+  downKeyBtn.setAttribute("id","downKeyId");
+  downKeyBtn.appendChild(downKey);
 
   for(let i=0; i<9; i++){
     const square = document.createElement('div');
     if(i==1){
-      square.appendChild(upKey);
+      square.appendChild(upKeyBtn);
     }else if(i==3){
-      square.appendChild(leftKey);
+      square.appendChild(leftKeyBtn);
     }else if(i==5){
-      square.appendChild(rightKey);
+      square.appendChild(rightKeyBtn);
     }else if(i==7){
-      square.appendChild(downKey);
+      square.appendChild(downKeyBtn);
+    }else{
+      ;
     }
     square.classList.add('squareKey');
     gridKey.appendChild(square);
     squareKey.push(square);
   }
 }
-createKey();
+createVirtualKeypad();
+const upKeyBtnPressed = document.getElementById('upKeyId');
+const leftKeyBtnPressed = document.getElementById('leftKeyId');
+const rightKeyBtnPressed = document.getElementById('rightKeyId');
+const downKeyBtnPressed = document.getElementById('downKeyId');
+
+upKeyBtnPressed.addEventListener('click', () => direction = -width);
+leftKeyBtnPressed.addEventListener('click', () => direction = -1);
+rightKeyBtnPressed.addEventListener('click', () => direction = 1);
+downKeyBtnPressed.addEventListener('click', () => direction = +width);
+
 
 function createGrid() {
   //create 100 of these elements with a for loop
@@ -81,7 +106,9 @@ function startGame() {
   //remove the snake
   currentSnake.forEach(index => squares[index].classList.remove('snake'))
   //remove the apple
-  squares[appleIndex].classList.remove('apple')
+  squares[appleIndex.position].classList.remove('apple')
+  squares[appleIndex.position].textContent = '';
+
   clearInterval(timerId)
   currentSnake = [2, 1, 0]
   score = 0
@@ -117,6 +144,8 @@ function move() {
   if (squares[currentSnake[0]].classList.contains('apple')) {
     //remove the class of apple
     squares[currentSnake[0]].classList.remove('apple')
+    squares[appleIndex.position].textContent = '';
+
     //grow our snake by adding class of snake to it
     squares[tail].classList.add('snake')
     console.log(tail)
@@ -149,9 +178,24 @@ function move() {
 
 function generateApple() {
   do {
-    appleIndex = Math.floor(Math.random() * squares.length)
-  } while (squares[appleIndex].classList.contains('snake'))
-  squares[appleIndex].classList.add('apple')
+    appleIndex.position = Math.floor(Math.random() * squares.length);
+  } while (squares[appleIndex.position].classList.contains('snake'));
+  //I create one random number in 0~999, if 0~700 '🍆',
+  //701-900'🥕', 901-960'🍅', 961~999'🥒'
+  //It's only show Apple in the begging... Hahaha....
+  const temp = Math.floor(Math.random() *1000);
+  if(temp<=700)
+    appleIndex.foodName = 0;
+  else if(temp>700 && temp <=900)
+    appleIndex.foodName = 1;
+  else if(temp>900 && temp <=960)
+    appleIndex.foodName = 2;
+  else
+    appleIndex.foodName = 3;
+  //console.log( appleIndex.foodName ); 
+  squares[appleIndex.position].classList.add('apple');
+  squares[appleIndex.position].textContent = '🍎';
+
 }
 generateApple()
 
