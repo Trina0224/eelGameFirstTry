@@ -6,7 +6,7 @@ const gridKey = document.getElementById('keyPad');
 
 
 
-
+const interT = 1500;
 let squares = []
 let squaresImg = [];
 let squareKey = [];
@@ -15,7 +15,7 @@ let direction = 1
 const width = 10
 let appleIndex ={position: 0, foodName: 0};
 let score = 0
-let intervalTime = 1500;
+let intervalTime = interT;
 let speed = 0.9
 let timerId = 0
 
@@ -24,6 +24,14 @@ const food = ['./pics/aubergine.png',
               './pics/tomato.png',
               './pics/cucumber.png','🍎'];
 
+const sheSaid = [
+  '今日もお互い(に)頑張ろうね',
+  '今日も素敵な1日になりますように',
+  '明日も一緒に頑張ろう',
+  '応援おうえんしています',
+  'GAME OVER 痛い～痛い～'
+];
+const message = document.getElementById('sheSaidmsg');
 
 
 function createVirtualKeypad(){
@@ -146,7 +154,7 @@ function startGame() {
   //re add new score to browser
   scoreDisplay.textContent = score
   direction = 1
-  intervalTime = 1000
+  intervalTime = interT;
   generateApple()
   //re add the snake's eye
   addSnakeEye();
@@ -163,9 +171,12 @@ function move() {
     (currentSnake[0] % width === 0 && direction === -1) || //if snake has hit left wall
     (currentSnake[0] - width < 0 && direction === -width) || //if snake has hit top
     squares[currentSnake[0] + direction].classList.contains('snake')
-  )
-    return clearInterval(timerId)
+  ){
+    //display related wording.
+    message.textContent = sheSaid[4];
 
+    return clearInterval(timerId);
+  }
   //remove last element from our currentSnake array
   const tail = currentSnake.pop()
   //remove styling from last element
@@ -242,15 +253,15 @@ function generateApple() {
     appleIndex.position = Math.floor(Math.random() * squares.length);
   } while (squares[appleIndex.position].classList.contains('snake'));
   //I create one random number in 0~999, if 0~700 '🍆',
-  //701-900'🥕', 901-960'🍅', 961~999'🥒'
+  //701-900'🍅', 901-960'🥕', 961~999'🥒'
   //It's only show Apple🍎 in the begging... Hahaha....
   const temp = Math.floor(Math.random() *1000);
   if(temp<=700)
     appleIndex.foodName = 0;
   else if(temp>700 && temp <=900)
-    appleIndex.foodName = 1;
-  else if(temp>900 && temp <=960)
     appleIndex.foodName = 2;
+  else if(temp>900 && temp <=960)
+    appleIndex.foodName = 1;
   else
     appleIndex.foodName = 3;
   //console.log( appleIndex.foodName );
@@ -258,6 +269,8 @@ function generateApple() {
   //squares[appleIndex.position].textContent = food[appleIndex.foodName];
   squaresImg[appleIndex.position].src=food[appleIndex.foodName];
 
+  //display related wording.
+  message.textContent = sheSaid[appleIndex.foodName];
 
 
 
@@ -288,15 +301,15 @@ document.addEventListener('keyup', control)
 startButton.addEventListener('click', startGame)
 
 
-var video = document.getElementById("myVideo");
-var btn = document.getElementById("myBtn");
-
-function myFunction() {
-  if (video.paused) {
-    video.play();
-    btn.innerHTML = "Pause";
-  } else {
-    video.pause();
-    btn.innerHTML = "Play";
-  }
-}
+// var video = document.getElementById("myVideo");
+// var btn = document.getElementById("myBtn");
+//
+// function myFunction() {
+//   if (video.paused) {
+//     video.play();
+//     btn.innerHTML = "Pause";
+//   } else {
+//     video.pause();
+//     btn.innerHTML = "Play";
+//   }
+// }
