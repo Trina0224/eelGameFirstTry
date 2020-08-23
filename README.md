@@ -3,9 +3,12 @@ It's a frontend website practice using HTML/CSS and JS. A traditional snake-game
 
 <img src="./pics/screen.png" alt="drawing" width="350"/>
 
+
+__*It's not a responsive website, I only know it is okay on Mac and Surface.*__
 ### [CLICK HERE][mylink]
 
 [mylink]:https://trina0224.github.io/eelGameFirstTry/ "my eelgame"
+
 
 ## What I learned
 1. Traditional snake-game rules and algorithms.
@@ -22,6 +25,7 @@ It's a frontend website practice using HTML/CSS and JS. A traditional snake-game
 	* Vegetables may generate on eel's body.
 	* The eel cannot walk/pass on herself.
 	* The code in CSS and JS are messy.
+	* It's not working well on iPad because it generates multi vegetables and eel heads.😭⛈
 4.  It's a homework to me. No plan to improve it for now.    
 
 ## Reference
