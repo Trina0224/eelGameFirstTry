@@ -18,7 +18,7 @@ It's a frontend website practice using HTML/CSS and JS. A traditional snake-game
 3.  I use __procreate__ to draw my pink eel head. It's also the first time I used this app on my iPad, it's brought me a lot of fun, and I decided to practice it to build a digital-drawing skill.
 4.  I am trying to put small *PNG* files to represent eel's head. I cannot find a way to put an image in *div* class. So I reuse the same skill that I  learned in 3. I used __div-img__ cascaded method.
 5. __div-img__ this method bring me another trouble, when I used ```(div).textContent= '🍆'``` to show vegetables on the board,  the __img__ tag in __div__ was gone, I work- around this issue via replacing all emoji to small 20x20 pixel .png files.
-6. I learned how to put a video for my background. ## Some Numbers  
+6. I learned how to put a video for my background. 
 
 ## MISC
 1.  One *div* force everything display in the column. The other div forces everything display in rows.
