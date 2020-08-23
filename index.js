@@ -8,13 +8,14 @@ const gridKey = document.getElementById('keyPad');
 
 
 let squares = []
+let squaresImg = [];
 let squareKey = [];
 let currentSnake = [2, 1, 0]
 let direction = 1
 const width = 10
 let appleIndex ={position: 0, foodName: 0};
 let score = 0
-let intervalTime = 1000
+let intervalTime = 1500;
 let speed = 0.9
 let timerId = 0
 
@@ -90,15 +91,34 @@ function createGrid() {
       } else {
         square.classList.add('square_light')
       }
+      //put one img to this div
+      const img4ThisSquare = document.createElement('img');
+      square.appendChild(img4ThisSquare);
       //put the element into our grid
       grid.appendChild(square)
       //push it into a new squares array
       squares.push(square)
+      squaresImg.push(img4ThisSquare);
 
     }
   }
 }
 createGrid()
+
+function addSnakeEye(){
+    //squares[currentSnake[0]].textContent = '⚫'
+    //let images = document.querySelectorAll('div img');
+    //console.log(images);
+    squaresImg[currentSnake[0]].src='./pics/myresized.png';
+    //backgroundImage = './pics/myresized.png';
+}
+addSnakeEye()
+
+function removeSnakeEye(){
+    //squares[currentSnake[0]].textContent = ''
+    squaresImg[currentSnake[0]].src='';
+}
+
 
 currentSnake.forEach(index => squares[index].classList.add('snake'))
 
@@ -106,7 +126,7 @@ function startGame() {
   //remove the snake
   currentSnake.forEach(index => squares[index].classList.remove('snake'))
   //remove the apple
-  squares[appleIndex.position].classList.remove('apple')
+  squares[appleIndex.position].classList.remove('apple');
   squares[appleIndex.position].textContent = '';
 
   clearInterval(timerId)
@@ -117,6 +137,9 @@ function startGame() {
   direction = 1
   intervalTime = 1000
   generateApple()
+  //re add the snake's eye
+  addSnakeEye();
+
   //readd the class of snake to our new currentSnake
   currentSnake.forEach(index => squares[index].classList.add('snake'))
   timerId = setInterval(move, intervalTime)
@@ -140,6 +163,10 @@ function move() {
   currentSnake.unshift(currentSnake[0] + direction)
   //add styling so we can see it
 
+  //re add the snake's eye
+  addSnakeEye();
+
+
   //deal with snake head gets apple
   if (squares[currentSnake[0]].classList.contains('apple')) {
     //remove the class of apple
@@ -152,17 +179,33 @@ function move() {
     //grow our snake array
     currentSnake.push(tail)
     console.log(currentSnake)
-    //generate new apple
-    generateApple()
-    //add one to the score
-    score++
+    //add one to the score, update to map different vegs.
+    if(appleIndex.foodName === 0)
+      score++;
+    else if(appleIndex.foodName === 1)
+      score -=2;
+    else if(appleIndex.foodName === 2)
+      score +=3;
+    else
+      score -=6;
     //display our score
     scoreDisplay.textContent = score
     //speed up our snake
     clearInterval(timerId)
-    console.log(intervalTime)
-    intervalTime = intervalTime * speed
-    console.log(intervalTime)
+//    console.log(intervalTime)
+    if(appleIndex.foodName === 0)
+      intervalTime = intervalTime * speed;
+    else if(appleIndex.foodName === 1)
+      intervalTime = intervalTime / speed;
+    else if(appleIndex.foodName === 2)
+      intervalTime = intervalTime * speed * speed;
+    else
+      intervalTime = intervalTime / speed / speed;
+//    console.log(intervalTime)
+
+    //generate new apple
+    generateApple();
+
     timerId = setInterval(move, intervalTime)
   }
 
@@ -182,7 +225,7 @@ function generateApple() {
   } while (squares[appleIndex.position].classList.contains('snake'));
   //I create one random number in 0~999, if 0~700 '🍆',
   //701-900'🥕', 901-960'🍅', 961~999'🥒'
-  //It's only show Apple in the begging... Hahaha....
+  //It's only show Apple🍎 in the begging... Hahaha....
   const temp = Math.floor(Math.random() *1000);
   if(temp<=700)
     appleIndex.foodName = 0;
@@ -192,9 +235,9 @@ function generateApple() {
     appleIndex.foodName = 2;
   else
     appleIndex.foodName = 3;
-  //console.log( appleIndex.foodName ); 
+  //console.log( appleIndex.foodName );
   squares[appleIndex.position].classList.add('apple');
-  squares[appleIndex.position].textContent = '🍎';
+  squares[appleIndex.position].textContent = food[appleIndex.foodName];
 
 }
 generateApple()

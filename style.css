@@ -17,7 +17,7 @@ html, body {
 button{
   cursor: pointer;
   border-radius: 50px;
-  
+
 }
 
 #myVideo {
@@ -110,14 +110,14 @@ button{
     height: 20px;
     background-color: #d2c99c;
     border: 1px solid #9ead8a;
-    border-radius: 50px;
+    border-radius: 5px;
 }
 .square_light {
     width: 20px;
     height: 20px;
     background-color: #e8dabe;
     border: 1px solid #9ead8a;
-    border-radius: 50px;
+    border-radius: 5px;
 }
 
 .snake {
@@ -125,7 +125,7 @@ button{
 }
 
 .apple {
-    background-color: blue;
+    /* background-color: blue; */
 }
 
 .splashContainerR{
