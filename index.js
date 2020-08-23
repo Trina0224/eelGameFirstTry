@@ -19,7 +19,10 @@ let intervalTime = 1500;
 let speed = 0.9
 let timerId = 0
 
-const food = ['🍆', '🥕', '🍅', '🥒','🍎'];
+const food = ['./pics/aubergine.png',
+              './pics/carrot.png',
+              './pics/tomato.png',
+              './pics/cucumber.png','🍎'];
 
 
 
@@ -102,6 +105,7 @@ function createGrid() {
 
     }
   }
+  console.log(squaresImg);
 }
 createGrid()
 
@@ -112,7 +116,6 @@ function addSnakeEye(){
     squaresImg[currentSnake[0]].src='./pics/myresized.png';
     //backgroundImage = './pics/myresized.png';
 }
-addSnakeEye()
 
 function removeSnakeEye(){
     //squares[currentSnake[0]].textContent = ''
@@ -122,12 +125,20 @@ function removeSnakeEye(){
 
 currentSnake.forEach(index => squares[index].classList.add('snake'))
 
+addSnakeEye();
+
+
 function startGame() {
   //remove the snake
   currentSnake.forEach(index => squares[index].classList.remove('snake'))
+
+  //remove the snakes's eye
+  removeSnakeEye();
+
   //remove the apple
   squares[appleIndex.position].classList.remove('apple');
-  squares[appleIndex.position].textContent = '';
+  //squares[appleIndex.position].textContent = '';
+  squaresImg[appleIndex.position].src='';
 
   clearInterval(timerId)
   currentSnake = [2, 1, 0]
@@ -159,6 +170,10 @@ function move() {
   const tail = currentSnake.pop()
   //remove styling from last element
   squares[tail].classList.remove('snake')
+
+  //remove the snakes's eye
+  removeSnakeEye();
+
   //add square in direction we are heading
   currentSnake.unshift(currentSnake[0] + direction)
   //add styling so we can see it
@@ -171,14 +186,16 @@ function move() {
   if (squares[currentSnake[0]].classList.contains('apple')) {
     //remove the class of apple
     squares[currentSnake[0]].classList.remove('apple')
-    squares[appleIndex.position].textContent = '';
+    //squares[appleIndex.position].textContent = '';
+    squaresImg[appleIndex.position].src='./pics/myresized.png';
+
 
     //grow our snake by adding class of snake to it
     squares[tail].classList.add('snake')
-    console.log(tail)
+    //console.log(tail)
     //grow our snake array
     currentSnake.push(tail)
-    console.log(currentSnake)
+    //console.log(currentSnake)
     //add one to the score, update to map different vegs.
     if(appleIndex.foodName === 0)
       score++;
@@ -212,6 +229,7 @@ function move() {
 
 
   squares[currentSnake[0]].classList.add('snake')
+
 }
 
 
@@ -237,7 +255,11 @@ function generateApple() {
     appleIndex.foodName = 3;
   //console.log( appleIndex.foodName );
   squares[appleIndex.position].classList.add('apple');
-  squares[appleIndex.position].textContent = food[appleIndex.foodName];
+  //squares[appleIndex.position].textContent = food[appleIndex.foodName];
+  squaresImg[appleIndex.position].src=food[appleIndex.foodName];
+
+
+
 
 }
 generateApple()
