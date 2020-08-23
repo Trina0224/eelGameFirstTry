@@ -1,7 +1,7 @@
 # eelGameFirstTry
 It's a frontend website practice using HTML/CSS and JS. A traditional snake-game. Because I wouldn't say I like snakes, I rename it to eel. This repo is an excellent course on Scrimba. Please check the details below.
 
-<img src="./pics/screen.png" alt="drawing" width="200"/>
+<img src="./pics/screen.png" alt="drawing" width="350"/>
 
 ## What I learned
 1. Traditional snake-game rules and algorithms.
