@@ -1,5 +1,8 @@
 # eelGameFirstTry
 It's a frontend website practice using HTML/CSS and JS. A traditional snake-game. Because I wouldn't say I like snakes, I rename it to eel. This repo is an excellent course on Scrimba. Please check the details below.
+
+<img src="./pics/screen.png" alt="drawing" width="200"/>
+
 ## What I learned
 1. Traditional snake-game rules and algorithms.
 2. The virtual keypad is important because tablets, cellphones, and touch-screens are almost everywhere. I tried to build my own one, the JS part is simple, but making it styled is challenging. At last, I decided to use __div-btn-img__ stacks up. Using __div__ to keep buttons in places, __img__ is a container to put arrows.
