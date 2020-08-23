@@ -183,14 +183,16 @@ function move() {
   squares[tail].classList.remove('snake')
 
   //remove the snakes's eye
-  removeSnakeEye();
+  //removeSnakeEye();
+  squaresImg[currentSnake[0]].src='';
 
   //add square in direction we are heading
   currentSnake.unshift(currentSnake[0] + direction)
   //add styling so we can see it
 
   //re add the snake's eye
-  addSnakeEye();
+  //addSnakeEye();
+  squaresImg[currentSnake[0]].src='./pics/myresized.png';
 
 
   //deal with snake head gets apple
