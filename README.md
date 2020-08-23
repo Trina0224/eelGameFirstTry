@@ -4,7 +4,7 @@ It's a frontend website practice using HTML/CSS and JS. A traditional snake-game
 <img src="./pics/screen.png" alt="drawing" width="350"/>
 
 
-__*It's not a responsive website, I only know it is okay on Mac and Surface.*__
+<p style="color: #f38181;"><strong><em>It's not a responsive website, I only know it is okay on my Mac, Surface and Sony's Xperia but not on my iPhone and iPad.</em></strong></p>
 ### [CLICK HERE][mylink]
 
 [mylink]:https://trina0224.github.io/eelGameFirstTry/ "my eelgame"
