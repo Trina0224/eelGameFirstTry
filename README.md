@@ -4,8 +4,8 @@ It's a frontend website practice using HTML/CSS and JS. A traditional snake-game
 <img src="./pics/screen.png" alt="drawing" width="350"/>
 
 ```diff
-@@ It's not a responsive website, I only know it is okay on my Mac, Surface and Sony's Xperia @@
-@@ but not on my iPhone and iPad. @@
+@@ It's not a responsive website, I only know it is okay on my Mac, Surface and Sony's Xperia 
+@@ but not on my iPhone and iPad.
 ```
 ### [CLICK HERE][mylink]
 
