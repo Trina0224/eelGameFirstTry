@@ -3,6 +3,10 @@ It's a frontend website practice using HTML/CSS and JS. A traditional snake-game
 
 <img src="./pics/screen.png" alt="drawing" width="350"/>
 
+### [CLICK HERE][mylink]
+
+[mylink]:https://trina0224.github.io/eelGameFirstTry/ "my eelgame"
+
 ## What I learned
 1. Traditional snake-game rules and algorithms.
 2. The virtual keypad is important because tablets, cellphones, and touch-screens are almost everywhere. I tried to build my own one, the JS part is simple, but making it styled is challenging. At last, I decided to use __div-btn-img__ stacks up. Using __div__ to keep buttons in places, __img__ is a container to put arrows.
